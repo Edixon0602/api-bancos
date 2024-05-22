@@ -9,6 +9,7 @@ indexRouter.get('/all', function(req, res, next) {
 
 indexRouter.get('/bank/:code', function(req, res, next) {
   const bank = Codes.find(bank => bank.code === req.params.code)
+  if (!bank) return res.status(404).send({'error': 'bank not found'})
   res.send(bank)
 })
 
