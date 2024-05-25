@@ -1,11 +1,16 @@
 import express from 'express'
 import Codes from '../Codes.mjs'
 import path from 'path'
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 const indexRouter = express.Router()
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 /* GET home page. */
 indexRouter.get('/', function(req, res, next) {
-  res.sendFile('./public/index.html')
+  const filePath = path.join(__dirname, '../public', 'home.html')
+  res.sendFile(filePath)
 });
 
 /* GET all */
