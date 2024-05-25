@@ -1,8 +1,14 @@
 import express from 'express'
 import Codes from '../Codes.mjs'
+import path from 'path'
 const indexRouter = express.Router()
 
 /* GET home page. */
+indexRouter.get('/', function(req, res, next) {
+  res.sendFile('./public/index.html')
+});
+
+/* GET all */
 indexRouter.get('/all', function(req, res, next) {
   res.send(Codes)
 });
